@@ -3,7 +3,6 @@ import LoaderGif from '../../../assets/icons8-fidget-spinner.gif';
 import style from './loader.module.scss';
 function Loader(props) {
     const { toggleLoader } = props;
-    console.log('toggleLoader', toggleLoader)
     return (
         <>
             {
