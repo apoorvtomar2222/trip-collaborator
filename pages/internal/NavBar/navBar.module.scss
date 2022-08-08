@@ -1,0 +1,53 @@
+.container {
+    background: white;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    color: #000;
+    flex-direction: column;
+
+}
+
+.tab {
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+    max-height: 44px;
+    min-height: 44px;
+
+    background: antiquewhite;
+    align-items: center;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+    flex: 40%;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    flex: 40%;
+}
+
+.rightButton {
+    display: flex;
+    justify-content: center;
+    flex: 20%;
+    cursor: pointer;
+}
+
+.active {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.inactive {
+    cursor: pointer;
+}
+
+// .logo {
+//     display: flex;
+//     padding: 10px;
+// }
