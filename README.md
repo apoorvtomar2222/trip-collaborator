@@ -33,6 +33,94 @@ JavaScript, React, fetch(ajax), Redis-OM, sass, lodash
 JavaScript, Next.js, Redis-OM
 
 ---
+### Architecture Diagram
+
+![Overall Architecture Diagram](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3czqcf34nbhhhrj5t1lm.png)
+
+![Flow Diagram](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/epp1tn4z0q9sg52tk8ge.png)
+
+---
+--- 
+How it works?
+
+### Describes how you store the data
+We have used Redis as out database. Redis supports various datatypes, but we will be storing the data as JSON. Which will help us replicate the most common no sql database nowadays i.e. MongoDB.
+
+The data in redis will have two schemas as follow. One for location and other for user.
+
+#### Location Schema
+
+```
+    Location,
+    {
+        name: { type: 'string' },
+        location: { type: 'string' },
+        image: { type: 'string' },
+        description: { type: 'text', textSearch: true },
+    }
+```
+#### User Schema
+
+```
+  User,
+    {
+        name: { type: 'string' },
+        password: { type: 'string' },
+        relatedItems: { type: 'string[]' }
+    }
+```
+
+As we have used redis-om so for storing the data we have to create repository which we help us in creating the entity used to store the data.
+Following is method used to save data in location
+
+```
+export async function addLocation(data) {
+    await connect();
+    const repository = client.fetchRepository(schema)
+    const car = repository.createEntity(data);
+    const id = await repository.save(car);
+    return id;
+}
+```
+Following is the screenshot from Redis Insight, which is a UI tool giving a interface for keeping track of stored data.
+
+![Redis Insight](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fhoicroczzs8d1us9waa.png)
+ 
+
+### Describes how you read the data
+
+Now once we were successful in storing the data to our redis cloud database. It was time to query the data. 
+
+We have fetched the data using following command. The once which we will be discussing is about the search functionality that can be found on feed page as show in screenshot below.
+
+![Feed Page Screenshot](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ykl6pphy21v1vhbcimvb.png)
+
+
+```
+export async function searchLocation(q) {
+    await connect();
+
+    const repository = new Repository(schema, client);
+    let locations;
+    if (q) {
+        locations = await repository.search()
+            .where('name').eq(q)
+            .or('location').eq(q)
+            .or('description').matches(q)
+            .return.all();
+
+    } else {
+        locations = await repository.search().return.all();
+    }
+
+
+    return locations;
+}
+```
+
+Here you will observe we have used search function provided. For filtering the data we have where and or function where we can provide our conditions.
+
+---
 ### Additional Resources / Info
 - [lodash ](https://www.npmjs.com/package/lodash)
 - [redis-om ](https://www.npmjs.com/package/redis-om)
@@ -43,7 +131,18 @@ JavaScript, Next.js, Redis-OM
 
 ### How to run it locally?
 
-First, run the development server:
+### Prerequisites
+ - Node.js 12.22.0 or later
+ - MacOS, Windows, Linux
+
+### Local installation
+-  Run the following command for installing the packages
+
+```bash
+ npm install 
+```
+
+- Run the development server:
 
 ```bash
 npm run dev
@@ -51,9 +150,9 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Open [http://localhost:3000/internal](http://localhost:3000/internal) with your browser to see the result.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
@@ -65,6 +164,8 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 ----
+
+
 
 ## More Information about Redis Stack
 

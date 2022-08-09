@@ -8,6 +8,14 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const userId = localStorage.getItem('user');
+    if (location.pathname === '/' || location.pathname === '/internal') {
+      if (!userId) {
+        router.push('/internal/LoginPage');
+      } else {
+        router.push('/internal/Feeds');
+      }
+
+    }
     if (!userId) {
       router.push('/internal/LoginPage');
     }
