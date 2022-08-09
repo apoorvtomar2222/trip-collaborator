@@ -1,4 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Trip Collaborator
+
+### About the project.
+Trip Collaborator is an application which will help solve the biggest problem of booking a trip amongst friends, family and relatives.
+
+### Problem Statement.
+
+While we are planning for our next getaway, normally we have lots of places in our mind. These suggestion we either get it from various  platforms but managing them is a bit of a concern.
+
+The thought behind Trip Collaborator is to make that hustle easier, two users should easily be able to share location. There are various features that can be implemented along with these.
+
+I will add scope to which this project can be extended in scope section. If anyone interest can submit a pull request.
+
+### Screenshots of the application
+#### Login Page
+
+![Login Page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/q8h2kir57sjiwlhewxpp.png)
+
+#### Feed Home page
+
+![Feed Home Page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/oo1v6vokxfh43xp436gf.png)
+
+#### Referred Feed Home page
+
+![Referred Feed Home page!](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4ky8cnk772nkm3vqhy42.png)
+
+---
+
+### Tech Stack
+#### Frontend:
+JavaScript, React, fetch(ajax), Redis-OM, sass, lodash
+#### Backend: 
+JavaScript, Next.js, Redis-OM
+
+---
+
+
+
+
+
+
 
 ## Getting Started
 
