@@ -1,4 +1,4 @@
-import { removeFeed } from '../../lib/redis';
+import { removeFeed } from '../../services/redis';
 
 export default async function handler(req, res) {
     const entityId = req.query.entityId;

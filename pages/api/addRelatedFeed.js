@@ -1,4 +1,4 @@
-import { addRelatedFeed } from '../../lib/redis';
+import { addRelatedFeed } from '../../services/redis';
 
 export default async function handler(req, res) {
     const users = await addRelatedFeed(req.body);

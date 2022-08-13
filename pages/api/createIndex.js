@@ -1,4 +1,4 @@
-import { createIndex } from '../../lib/redis';
+import { createIndex } from '../../services/redis';
 
 export default async function handler(req, res) {
     await createIndex();

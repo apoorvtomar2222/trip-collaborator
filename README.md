@@ -3,6 +3,8 @@
 ### About the project.
 Trip Collaborator is an application which will help solve the biggest problem of booking a trip amongst friends, family and relatives.
 
+---
+
 ### Problem Statement.
 
 While we are planning for our next getaway, normally we have lots of places in our mind. These suggestion we either get it from various  platforms but managing them is a bit of a concern.
@@ -11,6 +13,7 @@ The thought behind Trip Collaborator is to make that hustle easier, two users sh
 
 I will add scope to which this project can be extended in scope section. If anyone interest can submit a pull request.
 
+---
 ### Screenshots of the application
 #### Login Page
 
@@ -35,15 +38,22 @@ JavaScript, Next.js, Redis-OM
 ---
 ### Architecture Diagram
 
+#### Overall Architecture Diagram
+
 ![Overall Architecture Diagram](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3czqcf34nbhhhrj5t1lm.png)
+#### Flow Diagram
 
 ![Flow Diagram](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/epp1tn4z0q9sg52tk8ge.png)
 
+#### API Diagram
+![API diagram](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/es49tq9ybtvl2a1p3hgi.png)
+ 
+ 
+
 ---
---- 
 How it works?
 
-### Describes how you store the data
+### Store the data
 We have used Redis as out database. Redis supports various datatypes, but we will be storing the data as JSON. Which will help us replicate the most common no sql database nowadays i.e. MongoDB.
 
 The data in redis will have two schemas as follow. One for location and other for user.
@@ -87,7 +97,7 @@ Following is the screenshot from Redis Insight, which is a UI tool giving a inte
 ![Redis Insight](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fhoicroczzs8d1us9waa.png)
  
 
-### Describes how you read the data
+### Read the data
 
 Now once we were successful in storing the data to our redis cloud database. It was time to query the data. 
 

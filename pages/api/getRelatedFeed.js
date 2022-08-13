@@ -1,4 +1,4 @@
-import { getRelatedFeed } from '../../lib/redis';
+import { getRelatedFeed } from '../../services/redis';
 
 export default async function handler(req, res) {
     const entityId = req.query.entityId;

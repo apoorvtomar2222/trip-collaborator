@@ -1,5 +1,5 @@
 
-import { addLocations } from '../../lib/redis';
+import { addLocations } from '../../services/redis';
 
 export default async function handler(req, res) {
     const resp = await addLocations();

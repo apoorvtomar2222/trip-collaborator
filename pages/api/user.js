@@ -1,4 +1,4 @@
-import { getUsers } from '../../lib/redis';
+import { getUsers } from '../../services/redis';
 
 
 export default async function handler(req, res) {
