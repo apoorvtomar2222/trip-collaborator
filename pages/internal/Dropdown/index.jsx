@@ -20,4 +20,10 @@ function Dropdown(props) {
 
 Dropdown.propTypes = {}
 
+Dropdown.defaultProps = {
+    options: [],
+
+}
+
+
 export default Dropdown
