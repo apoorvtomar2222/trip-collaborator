@@ -149,9 +149,9 @@ Here you will observe we have used search function provided. For filtering the d
 -  Run the following command for installing the packages
 
 ```bash
- npm install 
+ npm install
 ```
-
+- Add your redis database URI into you .env file. Under the key REDIS_URL, which will used to create connection.
 - Run the development server:
 
 ```bash
